@@ -5,6 +5,13 @@ const authRoutes = require("./routes/auth");
 const messageRoutes = require("./routes/messages");
 const app = express();
 const socket = require("socket.io");
+
+const DB = "mongodb+srv://Abhishek:Minato%40123@cluster0.5lmre.mongodb.net/chat-snappy?retryWrites=true&w=majority";
+
+mongoose.connect(DB).then(() => {
+  console.log("connection successful");
+}).catch((err) => console.log(err));
+
 require("dotenv").config();
 
 app.use(cors());
@@ -30,7 +37,7 @@ const server = app.listen(process.env.PORT, () =>
 );
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chat-snappy.herokuapp.com",
     credentials: true,
   },
 });
