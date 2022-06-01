@@ -37,7 +37,7 @@ const server = app.listen(process.env.PORT, () =>
 );
 const io = socket(server, {
   cors: {
-    origin: "https://snappy-chat.vercel.app",
+    origin: "https://chat-snappy.herokuapp.com",
     credentials: true,
   },
 });
